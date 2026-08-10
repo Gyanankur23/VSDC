@@ -18,16 +18,16 @@ const Bootcamp = () => {
 
         {/* Single Impact Card */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-2xl text-center">
-            <h3 className="text-2xl font-black text-gray-900 mb-6">Program Overview</h3>
+          <div className="bg-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-700 shadow-2xl text-center">
+            <h3 className="text-2xl font-black text-white mb-6">Program Overview</h3>
             <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="bg-orange-50 rounded-2xl p-6 border border-orange-200">
+              <div className="bg-orange-500/10 rounded-2xl p-6 border border-orange-500/30">
                 <p className="text-5xl font-black text-orange-500 mb-2">9</p>
-                <p className="text-gray-700 font-bold">Days of Learning</p>
+                <p className="text-gray-300 font-bold">Days of Learning</p>
               </div>
-              <div className="bg-orange-50 rounded-2xl p-6 border border-orange-200">
+              <div className="bg-orange-500/10 rounded-2xl p-6 border border-orange-500/30">
                 <p className="text-5xl font-black text-orange-500 mb-2">1</p>
-                <p className="text-gray-700 font-bold">Day of Impact</p>
+                <p className="text-gray-300 font-bold">Day of Impact</p>
               </div>
             </div>
             <a
