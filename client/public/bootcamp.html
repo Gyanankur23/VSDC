@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSDC - AI & Software Development Bootcamp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-orange: #ff5722;
+            --neon-red: #ff0000;
+            --neon-cyan: #00ffff;
+        }
+        
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Starry Background */
+        .stars {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: stars-drift 100s linear infinite;
+            opacity: 0.3;
+            z-index: -2;
+        }
+        
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 87, 34, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 87, 34, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        @keyframes stars-drift {
+            from { transform: translateY(0); }
+            to { transform: translateY(-200px); }
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            opacity: 0.8;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--neon-red);
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -1px 0 var(--neon-cyan);
+            animation: glitch-anim2 3s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip-path: inset(20% 0 80% 0); }
+            20% { clip-path: inset(60% 0 10% 0); }
+            40% { clip-path: inset(40% 0 50% 0); }
+            60% { clip-path: inset(80% 0 5% 0); }
+            80% { clip-path: inset(10% 0 70% 0); }
+            100% { clip-path: inset(30% 0 40% 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip-path: inset(10% 0 60% 0); }
+            20% { clip-path: inset(80% 0 5% 0); }
+            40% { clip-path: inset(30% 0 20% 0); }
+            60% { clip-path: inset(70% 0 15% 0); }
+            80% { clip-path: inset(5% 0 80% 0); }
+            100% { clip-path: inset(50% 0 30% 0); }
+        }
+
+        /* Among Us Characters (CSS Shapes) */
+        .crewmate {
+            position: relative;
+            display: inline-block;
+            height: 1em; /* Scales with text */
+            width: 0.8em;
+            background-color: var(--color, #ea580c);
+            border: 0.08em solid #000;
+            border-radius: 0.4em 0.4em 0 0;
+            margin: 0 0.05em;
+            box-shadow: inset -0.1em -0.1em 0 rgba(0,0,0,0.3);
+            vertical-align: text-bottom;
+        }
+        .crewmate::before { /* Visor */
+            content: '';
+            position: absolute;
+            top: 0.2em; right: -0.1em;
+            width: 0.6em; height: 0.35em;
+            background-color: #93c5fd;
+            border: 0.08em solid #000;
+            border-radius: 0.2em;
+            box-shadow: inset 0.1em 0.1em 0 #fff;
+            z-index: 2;
+        }
+        .crewmate::after { /* Backpack */
+            content: '';
+            position: absolute;
+            top: 0.2em; left: -0.15em;
+            width: 0.2em; height: 0.5em;
+            background-color: var(--color, #ea580c);
+            border: 0.08em solid #000;
+            border-radius: 0.1em;
+            z-index: 0;
+        }
+        .crewmate .leg {
+            position: absolute;
+            bottom: -0.2em;
+            width: 0.3em; height: 0.3em;
+            background-color: var(--color, #ea580c);
+            border: 0.08em solid #000;
+            border-top: none;
+            border-radius: 0 0 0.15em 0.15em;
+        }
+        .crewmate .leg-left { left: 0; }
+        .crewmate .leg-right { right: 0; }
+
+        /* Neon Borders */
+        .neon-border {
+            border: 2px solid var(--neon-orange);
+            box-shadow: 0 0 10px rgba(255, 87, 34, 0.5), inset 0 0 10px rgba(255, 87, 34, 0.2);
+            position: relative;
+        }
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+        
+        .corner-brackets::before, .corner-brackets::after {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            border: 3px solid var(--neon-orange);
+            transition: all 0.3s ease;
+        }
+        .corner-brackets::before { top: -3px; left: -3px; border-right: none; border-bottom: none; }
+        .corner-brackets::after { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+
+        .title-font { font-family: 'Teko', sans-serif; }
+        
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 9999;
+            position: fixed;
+            pointer-events: none;
+            background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(255,87,34,0.1) 50%, rgba(0,0,0,0) 100%);
+            opacity: 0.1;
+            animation: scanline 8s linear infinite;
+        }
+        @keyframes scanline {
+            0% { top: -100px; }
+            100% { top: 100vh; }
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col items-center py-10 px-4">
+    <div class="stars"></div>
+    <div class="grid-overlay"></div>
+    <div class="scanline"></div>
+
+    <!-- Back Button -->
+    <a href="/#bootcamp" class="fixed top-6 left-6 z-50 text-orange-500 hover:text-white border border-orange-500/50 hover:bg-orange-500/20 px-4 py-2 rounded-lg font-bold flex items-center gap-2 transition-all backdrop-blur-md">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i> Main Base
+    </a>
+
+    <div class="max-w-5xl w-full relative z-10">
+        
+        <!-- Header -->
+        <header class="text-center mb-8 relative">
+            <div class="absolute top-0 right-0 border border-orange-500/50 p-3 text-right text-xs text-orange-400 opacity-80 rounded-bl-xl">
+                9 DAYS TO LEARN.<br>
+                <span class="text-white">1 DAY TO PROVE.</span>
+            </div>
+            
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <img src="/logo.png" alt="VSDC Logo" class="h-16 w-auto filter drop-shadow-[0_0_15px_rgba(255,87,34,0.8)]" />
+                <div class="text-left">
+                    <h1 class="text-4xl font-black text-white tracking-widest flex items-center gap-2">
+                        <span class="text-orange-500">V</span>SDC
+                        <i data-lucide="trending-up" class="w-8 h-8 text-orange-500"></i>
+                    </h1>
+                    <p class="text-xs tracking-widest text-gray-400">VighnoLearn Student Development Club</p>
+                </div>
+            </div>
+
+            <h2 class="title-font text-6xl md:text-8xl font-bold text-white leading-none mt-6 glitch" data-text="AI SOFTWARE">
+                <span class="text-orange-500">AI</span> SOFTWARE
+            </h2>
+            <h2 class="title-font text-6xl md:text-8xl font-bold text-white leading-none mt-2">
+                DEVELOPMENT
+            </h2>
+            
+            <!-- BOOTCAMP with Among Us characters -->
+            <div class="title-font text-7xl md:text-9xl font-bold text-gray-300 mt-4 flex justify-center items-center gap-1 drop-shadow-2xl">
+                B
+                <div class="crewmate" style="--color: #ea580c; font-size: 0.85em;">
+                    <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                </div>
+                <div class="crewmate" style="--color: #334155; font-size: 0.85em;">
+                    <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                </div>
+                TCAMP
+            </div>
+
+            <div class="mt-8 flex items-center justify-center w-full">
+                <div class="h-[1px] w-1/4 bg-gradient-to-r from-transparent to-orange-500"></div>
+                <p class="mx-4 text-sm md:text-base font-bold tracking-[0.2em] text-gray-300 text-center">
+                    9 DAYS OF KNOWLEDGE. <span class="text-orange-500">1 DAY OF IMPACT.</span>
+                </p>
+                <div class="h-[1px] w-1/4 bg-gradient-to-l from-transparent to-orange-500"></div>
+            </div>
+        </header>
+
+        <!-- Info Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="neon-border corner-brackets bg-black/60 p-6 flex items-center gap-4 hover:bg-orange-500/10 transition-colors">
+                <i data-lucide="calendar-days" class="w-10 h-10 text-orange-500"></i>
+                <div>
+                    <p class="text-xs text-gray-400 tracking-wider">REGISTRATION DEADLINE</p>
+                    <p class="text-lg font-bold text-white">22ND AUGUST 2026</p>
+                </div>
+            </div>
+            <div class="neon-border corner-brackets bg-black/60 p-6 flex items-center gap-4 hover:bg-orange-500/10 transition-colors">
+                <i data-lucide="calendar-check" class="w-10 h-10 text-orange-500"></i>
+                <div>
+                    <p class="text-xs text-gray-400 tracking-wider">EVENT ON</p>
+                    <p class="text-lg font-bold text-white">29TH AUGUST 2026</p>
+                </div>
+            </div>
+            <div class="neon-border corner-brackets bg-black/60 p-6 flex items-center gap-4 hover:bg-orange-500/10 transition-colors">
+                <i data-lucide="trophy" class="w-10 h-10 text-orange-500"></i>
+                <div>
+                    <p class="text-xs text-gray-400 tracking-wider">FINAL DAY</p>
+                    <p class="text-sm font-bold text-white leading-tight">PROJECT EXHIBITION<br>& COMPETITION</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prize Pool -->
+        <div class="neon-border rounded-br-3xl rounded-tl-3xl bg-black/80 p-8 text-center mb-12 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-orange-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+            <p class="text-orange-500 font-bold tracking-[0.3em] mb-2 text-sm">PRIZE POOL</p>
+            <h3 class="title-font text-7xl md:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-orange-400 to-orange-600 filter drop-shadow-[0_0_20px_rgba(234,88,12,0.4)] leading-none mb-4">
+                ₹40,000
+            </h3>
+            <div class="bg-orange-600 text-white font-black tracking-widest py-2 px-8 inline-block transform skew-x-[-15deg]">
+                <span class="inline-block skew-x-[15deg]">COMPETE. BUILD. WIN!</span>
+            </div>
+        </div>
+
+        <!-- Registration Tiers -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <!-- Individual -->
+            <div class="border border-orange-500/40 rounded-xl bg-black/50 p-6 flex items-center justify-between hover:border-orange-500 transition-colors">
+                <div class="crewmate" style="--color: #ea580c; font-size: 40px;">
+                    <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">INDIVIDUAL</p>
+                    <p class="text-3xl font-black text-white">₹2,000</p>
+                </div>
+            </div>
+            
+            <!-- Duo -->
+            <div class="border border-orange-500/40 rounded-xl bg-black/50 p-6 flex items-center justify-between hover:border-orange-500 transition-colors">
+                <div class="flex gap-2">
+                    <div class="crewmate" style="--color: #334155; font-size: 35px; transform: scaleX(-1);">
+                        <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                    </div>
+                    <div class="crewmate" style="--color: #ea580c; font-size: 35px;">
+                        <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">DUO</p>
+                    <p class="text-3xl font-black text-white">₹2,500</p>
+                </div>
+            </div>
+            
+            <!-- Trio -->
+            <div class="border border-orange-500/40 rounded-xl bg-black/50 p-6 flex items-center justify-between hover:border-orange-500 transition-colors">
+                <div class="flex gap-1">
+                    <div class="crewmate" style="--color: #334155; font-size: 30px; transform: scaleX(-1);">
+                        <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                    </div>
+                    <div class="crewmate" style="--color: #ea580c; font-size: 30px;">
+                        <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                    </div>
+                    <div class="crewmate" style="--color: #e2e8f0; font-size: 30px;">
+                        <div class="leg leg-left"></div><div class="leg leg-right"></div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-gray-400 tracking-widest font-bold">TRIO</p>
+                    <p class="text-3xl font-black text-white">₹3,000</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Info & QR Codes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 border-t border-orange-500/30 pt-8">
+            <!-- QR 1 -->
+            <div class="flex items-center gap-6 neon-border p-4 bg-black/40">
+                <div class="flex-1 text-right">
+                    <p class="text-orange-500 font-bold tracking-widest text-sm">SCAN TO</p>
+                    <p class="text-white font-black text-xl leading-tight">REGISTER<br>NOW!</p>
+                    <i data-lucide="clipboard-list" class="w-6 h-6 text-orange-500 mt-2 ml-auto"></i>
+                </div>
+                <div class="w-32 h-32 bg-white p-2 rounded-lg flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <i data-lucide="qr-code" class="w-full h-full text-black"></i>
+                </div>
+            </div>
+
+            <!-- QR 2 -->
+            <div class="flex items-center gap-6 neon-border p-4 bg-black/40">
+                <div class="flex-1 text-right">
+                    <p class="text-orange-500 font-bold tracking-widest text-sm">SCAN TO</p>
+                    <p class="text-white font-black text-xl leading-tight">FOLLOW US<br>ON INSTAGRAM!</p>
+                    <i data-lucide="instagram" class="w-6 h-6 text-orange-500 mt-2 ml-auto"></i>
+                </div>
+                <div class="w-32 h-32 bg-white p-2 rounded-lg flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <i data-lucide="qr-code" class="w-full h-full text-black"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location & Final Slogan -->
+        <div class="flex flex-col md:flex-row justify-between items-end gap-6 pb-12">
+            <div class="flex gap-4 items-start max-w-md">
+                <i data-lucide="map-pin" class="w-8 h-8 text-orange-500 shrink-0"></i>
+                <p class="text-gray-400 text-xs font-bold leading-relaxed">
+                    <span class="text-white text-sm">THAKUR SHYAMNARAYAN ENGINEERING COLLEGE</span><br>
+                    (Affl. to Univ. of Mumbai) Thakur Complex,<br>
+                    Kandivali East, Mumbai, Maharashtra 400101.
+                </p>
+            </div>
+            
+            <div class="text-right">
+                <div class="flex items-center justify-end gap-2 text-orange-500 mb-1">
+                    <i data-lucide="chevrons-right" class="w-6 h-6"></i>
+                </div>
+                <p class="text-gray-400 text-sm font-bold tracking-widest leading-relaxed">
+                    BUILD <span class="text-white">TODAY.</span><br>
+                    CODE <span class="text-white">TOMORROW.</span><br>
+                    LEAD <span class="text-white">FOREVER.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

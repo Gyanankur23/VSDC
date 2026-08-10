@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSDC Team Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes meshFloat {
+            0%,100% { transform: translate(0,0) scale(1) rotate(0deg); }
+            33%      { transform: translate(30px,-30px) scale(1.08) rotate(5deg); }
+            66%      { transform: translate(-20px,20px) scale(0.95) rotate(-5deg); }
+        }
+        @keyframes slideUp {
+            from { opacity:0; transform:translateY(35px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity:0; transform:scale(0.97); }
+            to   { opacity:1; transform:scale(1); }
+        }
+        @keyframes pulseSlow {
+            0%,100% { transform:scale(1);    opacity:1; }
+            50%     { transform:scale(1.05); opacity:0.85; }
+        }
+        @keyframes shimmer {
+            0%   { background-position:-200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes float {
+            0%,100% { transform:translateY(0)   rotate(0deg); }
+            50%     { transform:translateY(-10px) rotate(2deg); }
+        }
+        @keyframes textShimmer {
+            0%   { background-position:0% center; }
+            100% { background-position:200% center; }
+        }
+        .glass-card {
+            background: rgba(8,4,0,0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(249,115,22,0.18);
+        }
+        .text-gradient-orange {
+            background: linear-gradient(135deg,#ea580c 0%,#f97316 50%,#fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .animate-mesh-float  { animation: meshFloat  10s ease-in-out infinite; }
+        .animate-slideUp     { animation: slideUp    0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-fadeIn      { animation: fadeIn     0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .animate-pulse-slow  { animation: pulseSlow  3s ease-in-out infinite; }
+        .animate-float       { animation: float      4s ease-in-out infinite; }
+        .shimmer {
+            background: linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2.5s infinite;
+        }
+        .delay-100 { animation-delay:0.1s; }
+        .delay-200 { animation-delay:0.2s; }
+        .delay-300 { animation-delay:0.3s; }
+        .delay-400 { animation-delay:0.4s; }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden" style="background: linear-gradient(135deg, #000000 0%, #0a0400 30%, #1a0800 60%, #0d0300 100%);">
+    <!-- Ambient blobs -->
+    <div class="fixed top-1/4 left-10 w-96 h-96 bg-orange-500/15 rounded-full blur-3xl pointer-events-none animate-mesh-float"></div>
+    <div class="fixed bottom-10 right-10 w-[28rem] h-[28rem] bg-orange-700/10 rounded-full blur-3xl pointer-events-none animate-mesh-float" style="animation-delay:3s;"></div>
+    <!-- Dot grid overlay -->
+    <div class="fixed inset-0 pointer-events-none" style="background-image:radial-gradient(#f97316 1px,transparent 1px);background-size:32px 32px;opacity:0.03;"></div>
+
+    <div class="container mx-auto px-6 lg:px-20 relative z-10 py-12">
+        <a href="/#team" class="inline-flex items-center gap-2.5 bg-black/70 text-orange-400 hover:text-white hover:bg-orange-500 transition-all duration-300 px-5 py-2.5 rounded-2xl border border-orange-500/30 shadow-lg hover:shadow-xl hover:shadow-orange-500/25 mb-8 font-extrabold animate-fadeIn transform hover:-translate-y-0.5 backdrop-blur-md">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            Back to Team Heads
+        </a>
+        <div id="profile-content" class="max-w-7xl mx-auto"></div>
+    </div>
+
+    <script>
+        const members = [
+            {
+                name:"Manas", role:"President", year:"Third Year", dept:"Data Science",
+                image:"/profiles/Manas.png",
+                social:{
+                    instagram:"https://www.instagram.com/manas_shukla_101",
+                    github:"https://github.com/manas-shukla-101",
+                    linkedin:"https://www.linkedin.com/in/manas-shukla-006774370",
+                    email:"shuklamanas8928@gmail.com",
+                    website:"https://manas-shukla-portfolio.framer.website/"
+                }
+            },
+            { name:"Ayushi",    role:"Vice President",               year:"Second Year", dept:"BCA",          image:null, initial:"A",   social:{} },
+            { name:"Divyanshu", role:"Secretary",                    year:"Final Year",  dept:"DS",           image:null, initial:"D",   social:{} },
+            { name:"Amiti",     role:"Marketing Head",               year:"Second Year", dept:"BCA",          image:null, initial:"Am",  social:{} },
+            {
+                name:"Gyanankur", role:"Technical Head", year:"Third Year", dept:"Data Science",
+                image:"/profiles/Gyanankur.png",
+                social:{
+                    instagram:"https://www.instagram.com/gyanankur_b08206",
+                    email:"gyanankur9@gmail.com",
+                    linkedin:"https://www.linkedin.com/in/gyanankur-baruah-797205338",
+                    github:"https://www.github.com/Gyanankur23",
+                    website:"https://portfolio-one-alpha-30.vercel.app/"
+                }
+            },
+            {
+                name:"Mahima", role:"Event Coordinator", year:"Third Year", dept:"Data Science",
+                image:null, initial:"Mah",
+                social:{
+                    instagram:"https://www.instagram.com/maahhhiiii__?igsh=bjBxd25vMDdpaTZr&utm_source=qr",
+                    github:"https://github.com/mahimasingh20",
+                    linkedin:"https://linkedin.com/in/mahima-singh-datascience",
+                    email:"mahisingh0620@gmail.com",
+                    website:"https://github.com/mahimasingh20"
+                }
+            },
+            { name:"Aayush", role:"PR Head", year:"Final Year", dept:"Data Science", image:null, initial:"Aa", social:{} }
+        ];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const member = members.find(m => m.name.toLowerCase() === urlParams.get('name'));
+
+        if (!member) {
+            document.getElementById('profile-content').innerHTML = `
+                <div class="text-center animate-fadeIn py-20 glass-card rounded-3xl p-12 shadow-2xl">
+                    <h1 class="text-4xl font-black text-white mb-4">Member Profile Not Found</h1>
+                    <a href="/#team" class="text-orange-400 hover:text-orange-300 font-extrabold text-lg inline-flex items-center gap-2">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i> Return to Team Section
+                    </a>
+                </div>`;
+            lucide.createIcons();
+        } else {
+            const socialIcons = { instagram:'instagram', linkedin:'linkedin', github:'github', email:'mail', website:'globe' };
+            let socialLinksHTML = '';
+            for (const [key, value] of Object.entries(member.social)) {
+                const icon = socialIcons[key] || 'globe';
+                const label = key.charAt(0).toUpperCase() + key.slice(1);
+                const href = key === 'email' ? `mailto:${value}` : value;
+                let sub = value;
+                try { sub = key === 'email' ? value : new URL(value).hostname; } catch(e){}
+                socialLinksHTML += `
+                    <a href="${href}" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center gap-4 p-5 glass-card rounded-2xl border border-orange-500/20 hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300 group animate-slideUp transform hover:-translate-y-1 hover:scale-[1.03] hover:shadow-xl hover:shadow-orange-500/15">
+                        <div class="w-14 h-14 bg-orange-500/15 rounded-2xl flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 shrink-0">
+                            <i data-lucide="${icon}" class="w-7 h-7 text-orange-400 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-white font-black text-lg group-hover:text-orange-400 transition-colors block">${label}</span>
+                            <p class="text-gray-600 text-xs font-bold truncate group-hover:text-orange-500 transition-colors">${sub}</p>
+                        </div>
+                    </a>`;
+            }
+
+            document.getElementById('profile-content').innerHTML = `
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Left - Details (Top on mobile) -->
+                    <div class="animate-slideUp order-1 lg:order-1">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-orange-500/15 rounded-2xl flex items-center justify-center animate-pulse-slow border border-orange-500/20 shadow-xl shadow-orange-500/10">
+                                <i data-lucide="crown" class="w-8 h-8 text-orange-400 animate-float"></i>
+                            </div>
+                            <div>
+                                <span class="text-orange-400 font-extrabold text-xs tracking-widest uppercase">VSDC TEAM HEAD</span>
+                                <h1 class="text-5xl md:text-6xl font-black text-white mt-1 tracking-tight">${member.name}</h1>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6 mb-8 border-l-8 border-l-orange-500 border border-orange-500/20 animate-slideUp delay-300 shadow-xl hover:shadow-2xl hover:shadow-orange-500/15 transition-all transform hover:scale-[1.02]">
+                            <p class="text-3xl font-black text-gradient-orange">${member.role}</p>
+                        </div>
+
+                        ${Object.keys(member.social).length > 0 ? `
+                            <div class="mb-8">
+                                <h2 class="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                                    <i data-lucide="share-2" class="w-6 h-6 text-orange-400 animate-float"></i>
+                                    Connect & Follow
+                                </h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${socialLinksHTML}
+                                </div>
+                            </div>` : ''}
+
+                        <div class="glass-card rounded-2xl p-8 border border-orange-500/20 animate-slideUp delay-400 shadow-xl hover:shadow-2xl hover:shadow-orange-500/15 transition-all transform hover:scale-[1.02]">
+                            <h2 class="text-2xl font-black text-white mb-4 flex items-center gap-3">
+                                <i data-lucide="user" class="w-6 h-6 text-orange-400 animate-pulse-slow"></i>
+                                About ${member.name}
+                            </h2>
+                            <p class="text-gray-400 leading-relaxed text-lg font-medium">
+                                ${member.name} is a dedicated team leader at VSDC, serving as
+                                <span class="text-gradient-orange font-bold">${member.role}</span>.
+                                Actively steering projects, technical bootcamps, and student excellence programs across the university campus.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right - Profile Image (Bottom on mobile) -->
+                    <div class="animate-slideUp order-2 lg:order-2">
+                        <div class="relative rounded-3xl overflow-hidden border-4 border-orange-500/30 shadow-2xl shadow-orange-500/20 group" style="background:#0a0400;">
+                            ${member.image
+                                ? `<img src="${member.image}" alt="${member.name}" class="w-full h-auto object-cover max-h-[600px] transition-transform duration-700 group-hover:scale-105" />`
+                                : `<div class="w-full h-96 flex items-center justify-center" style="background:linear-gradient(135deg,#1a0800,#000);">
+                                    <span class="text-9xl font-black text-orange-400 animate-pulse-slow">${member.initial}</span>
+                                   </div>`}
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 shimmer"></div>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="grid grid-cols-2 gap-5 mt-6">
+                            <div class="glass-card rounded-2xl p-6 border border-orange-500/20 animate-slideUp delay-100 shadow-lg hover:shadow-xl hover:shadow-orange-500/15 transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.03]">
+                                <i data-lucide="graduation-cap" class="w-8 h-8 text-orange-400 mb-2 animate-float"></i>
+                                <p class="text-gray-500 text-xs font-extrabold uppercase tracking-wider mb-1">Department</p>
+                                <p class="text-white text-xl font-black">${member.dept}</p>
+                            </div>
+                            <div class="glass-card rounded-2xl p-6 border border-orange-500/20 animate-slideUp delay-200 shadow-lg hover:shadow-xl hover:shadow-orange-500/15 transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.03]">
+                                <i data-lucide="calendar" class="w-8 h-8 text-orange-400 mb-2 animate-float" style="animation-delay:0.5s;"></i>
+                                <p class="text-gray-500 text-xs font-extrabold uppercase tracking-wider mb-1">Academic Year</p>
+                                <p class="text-white text-xl font-black">${member.year}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

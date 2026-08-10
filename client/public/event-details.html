@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSDC Event Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-slideUp {
+            animation: slideUp 0.6s ease-out;
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .animate-pulse-slow {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-gradient-orange {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-black via-gray-950 to-black min-h-screen">
+    <div class="absolute top-1/2 left-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none animate-float"></div>
+    <div class="absolute bottom-10 right-20 w-72 h-72 bg-orange-700/10 rounded-full blur-3xl pointer-events-none animate-float" style="animation-delay: '5s'"></div>
+    
+    <div class="container mx-auto px-6 lg:px-20 relative z-10 py-12">
+        <a href="/#events" class="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors mb-8 font-semibold inline-block animate-fadeIn">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            Back to Events
+        </a>
+
+        <div id="event-content" class="max-w-7xl mx-auto">
+            <!-- Event content will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const events = [
+            {
+                id: "flutter-workshop",
+                title: "Flutter One-Day Workshop",
+                date: "August 2024",
+                attendees: "50+ Participants",
+                location: "VighnoLearn Campus",
+                description: "Introduction to Flutter for absolute beginners. Hands-on workshop covering cross-platform app development, hot-reload features, and custom UI creation using Google's Flutter framework.",
+                detailedDescription: `The Flutter One-Day Workshop was designed to introduce students to the world of cross-platform mobile app development. Participants learned the fundamentals of Flutter, Google's open-source UI toolkit, and gained hands-on experience building their first mobile applications.
+
+Key topics covered included:
+- Flutter architecture and widget tree
+- State management basics
+- Building responsive layouts
+- Hot-reload development workflow
+- Custom UI components
+- Material Design and Cupertino widgets
+
+The workshop featured live coding sessions, interactive exercises, and one-on-one mentorship from experienced Flutter developers. Students left with a fully functional prototype app and the skills to continue their Flutter journey.`,
+                images: ["/events/flutter-1.jpg", "/events/flutter-2.jpg", "/events/flutter-3.jpg"],
+                highlights: ["Hands-on coding exercises", "Live project building", "Certificate of completion", "Post-workshop support"],
+                instructor: "Vighnotech Team"
+            },
+            {
+                id: "vighnospark-2025",
+                title: "VighnoSpark 2025 Tech Exhibition",
+                date: "August 2025",
+                attendees: "500+ Attendees",
+                location: "Thakur Polytechnic, Kandivali (E), Mumbai",
+                description: "Tech exhibition featuring hands-on experiences, live demos, inspiring talks, and startup showcases. A full-sensory dive into the tech-driven world of tomorrow.",
+                detailedDescription: `VighnoSpark 2025 was a landmark tech exhibition that brought together industry leaders, startups, developers, and tech enthusiasts under one roof. The event featured cutting-edge technology demonstrations, interactive experiences, and thought-provoking discussions about the future of technology.
+
+Event highlights included:
+- Hands-on experiences with AR/VR technology
+- Live demos of AI-powered applications
+- Startup showcases and product launches
+- Panel discussions with industry experts
+- Networking sessions with tech professionals
+- Interactive workshops on emerging technologies
+
+The exhibition provided a platform for students to connect with industry leaders, explore career opportunities, and get inspired by the latest innovations in technology. Attendees had the opportunity to see real-world applications of AI, machine learning, blockchain, and other emerging technologies.`,
+                images: ["/events/vighnospark-1.jpg", "/events/vighnospark-2.jpg", "/events/vighnospark-3.jpg"],
+                highlights: ["500+ attendees", "20+ startups showcased", "10+ industry speakers", "Free entry for all"],
+                instructor: "Vighnotech & VSDC"
+            },
+            {
+                id: "ai-workshop",
+                title: "AI Workshop Series",
+                date: "March 2024",
+                attendees: "45+ Participants",
+                location: "VSDC Campus",
+                description: "Hands-on workshop covering neural networks, deep learning fundamentals, and practical implementation using TensorFlow.",
+                detailedDescription: `The AI Workshop Series provided students with a comprehensive introduction to artificial intelligence and machine learning. Participants learned the fundamentals of neural networks, deep learning architectures, and practical implementation using popular frameworks like TensorFlow.
+
+The workshop covered:
+- Introduction to AI and machine learning concepts
+- Neural network architectures and design
+- Deep learning fundamentals
+- TensorFlow and Keras implementation
+- Model training and evaluation
+- Real-world AI applications
+
+Students worked on hands-on projects including image classification, natural language processing, and predictive modeling. The workshop emphasized practical skills that students could immediately apply to their own projects and research.`,
+                images: ["/events/ai-1.jpg", "/events/ai-2.jpg", "/events/ai-3.jpg"],
+                highlights: ["Neural network implementation", "TensorFlow hands-on", "Real-world projects", "Industry insights"],
+                instructor: "VSDC Technical Team"
+            },
+            {
+                id: "web-dev-bootcamp",
+                title: "Web Development Bootcamp",
+                date: "February 2024",
+                attendees: "60+ Participants",
+                location: "VSDC Campus",
+                description: "Intensive 3-day bootcamp on modern web technologies including React, Node.js, and deployment strategies.",
+                detailedDescription: `The Web Development Bootcamp was an intensive 3-day program designed to take students from basics to building full-stack web applications. The curriculum covered modern web development practices and industry-standard tools.
+
+Topics included:
+- React fundamentals and component architecture
+- State management with Redux and Context API
+- Node.js and Express for backend development
+- Database integration with MongoDB
+- RESTful API design and implementation
+- Deployment strategies (Vercel, Netlify, AWS)
+
+Participants built complete web applications from scratch, learning both frontend and backend development. The bootcamp emphasized best practices, code quality, and real-world deployment scenarios.`,
+                images: ["/events/webdev-1.jpg", "/events/webdev-2.jpg", "/events/webdev-3.jpg"],
+                highlights: ["Full-stack development", "React & Node.js", "Database integration", "Live deployment"],
+                instructor: "VSDC Technical Team"
+            },
+            {
+                id: "data-science-hackathon",
+                title: "Data Science Hackathon",
+                date: "January 2024",
+                attendees: "30+ Teams",
+                location: "VSDC Campus",
+                description: "24-hour hackathon challenging students to solve real-world data problems using analytics and machine learning.",
+                detailedDescription: `The Data Science Hackathon was a 24-hour intensive competition where teams worked on solving real-world data problems using analytics and machine learning techniques. Participants had access to real datasets and industry mentors throughout the event.
+
+Hackathon structure:
+- Problem statement release and team formation
+- Data exploration and analysis phase
+- Model development and training
+- Solution presentation and judging
+- Awards ceremony and networking
+
+Teams worked on diverse challenges including predictive modeling, customer segmentation, anomaly detection, and recommendation systems. The event fostered collaboration, innovation, and practical application of data science skills.`,
+                images: ["/events/hackathon-1.jpg", "/events/hackathon-2.jpg", "/events/hackathon-3.jpg"],
+                highlights: ["24-hour challenge", "Real-world datasets", "Industry mentors", "Cash prizes"],
+                instructor: "VSDC Technical Team"
+            },
+            {
+                id: "industry-expert-talk",
+                title: "Industry Expert Talk",
+                date: "December 2023",
+                attendees: "100+ Attendees",
+                location: "VSDC Auditorium",
+                description: "Guest lecture by senior engineers from top tech companies sharing insights on career growth and industry trends.",
+                detailedDescription: `The Industry Expert Talk featured senior engineers from leading tech companies who shared their experiences and insights about career growth in the technology industry. The session provided students with valuable perspectives on navigating the tech job market and building successful careers.
+
+Topics covered:
+- Career paths in technology
+- Industry trends and future outlook
+- Skills employers are looking for
+- Building a strong professional network
+- Interview preparation and tips
+- Work-life balance in tech
+
+The interactive session included Q&A where students could ask specific questions about career development, company culture, and technical growth. Speakers shared personal stories and practical advice for aspiring tech professionals.`,
+                images: ["/events/talk-1.jpg", "/events/talk-2.jpg", "/events/talk-3.jpg"],
+                highlights: ["Senior engineers from top companies", "Career insights", "Networking opportunities", "Interactive Q&A"],
+                instructor: "Industry Experts"
+            },
+            {
+                id: "python-workshop",
+                title: "Python Programming Workshop",
+                date: "November 2023",
+                attendees: "50+ Participants",
+                location: "VSDC Campus",
+                description: "Beginner to advanced Python programming covering data structures, algorithms, and practical applications.",
+                detailedDescription: `The Python Programming Workshop catered to students at all skill levels, from complete beginners to those looking to advance their Python skills. The curriculum progressed from basic syntax to advanced programming concepts.
+
+Workshop content:
+- Python basics and syntax
+- Data structures (lists, dictionaries, sets)
+- Object-oriented programming
+- File handling and I/O operations
+- Algorithms and problem-solving
+- Libraries and frameworks (NumPy, Pandas)
+
+Students worked on practical exercises and projects that reinforced learning objectives. The workshop emphasized writing clean, efficient code and understanding fundamental programming concepts that transfer to other languages.`,
+                images: ["/events/python-1.jpg", "/events/python-2.jpg", "/events/python-3.jpg"],
+                highlights: ["Beginner to advanced", "Hands-on exercises", "Real-world applications", "Project-based learning"],
+                instructor: "VSDC Technical Team"
+            },
+            {
+                id: "cloud-seminar",
+                title: "Cloud Computing Seminar",
+                date: "October 2023",
+                attendees: "40+ Participants",
+                location: "VSDC Campus",
+                description: "Introduction to cloud platforms, AWS services, and best practices for scalable application deployment.",
+                detailedDescription: `The Cloud Computing Seminar introduced students to the fundamentals of cloud computing and practical usage of major cloud platforms. The focus was on AWS services and best practices for deploying scalable applications.
+
+Seminar topics:
+- Cloud computing fundamentals and models
+- AWS core services overview
+- EC2, S3, and RDS basics
+- Serverless computing with Lambda
+- Containerization with Docker and ECS
+- CI/CD pipelines and deployment strategies
+
+Participants learned through demonstrations and hands-on exercises with AWS Free Tier accounts. The seminar prepared students to leverage cloud services for their projects and understand modern deployment practices.`,
+                images: ["/events/cloud-1.jpg", "/events/cloud-2.jpg", "/events/cloud-3.jpg"],
+                highlights: ["AWS services overview", "Hands-on demonstrations", "Deployment best practices", "Free tier access"],
+                instructor: "VSDC Technical Team"
+            }
+        ];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('id');
+        const event = events.find(e => e.id === eventId);
+
+        if (!event) {
+            document.getElementById('event-content').innerHTML = `
+                <div class="text-center animate-fadeIn py-20 glass-card rounded-3xl p-12 shadow-2xl">
+                    <h1 class="text-4xl font-black text-white mb-4">Event Not Found</h1>
+                    <a href="/#events" class="text-orange-400 hover:text-orange-300 font-extrabold text-lg inline-flex items-center gap-2">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i> Return to Events Section
+                    </a>
+                </div>`;
+            lucide.createIcons();
+        } else {
+            document.getElementById('event-content').innerHTML = `
+                <div class="animate-slideUp">
+                    <!-- Header -->
+                    <div class="glass-card rounded-3xl p-8 mb-8 border border-orange-500/20 shadow-xl">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center animate-pulse-slow">
+                                <i data-lucide="calendar" class="w-8 h-8 text-orange-400"></i>
+                            </div>
+                            <div>
+                                <span class="text-orange-400 font-bold text-sm tracking-wider">EVENT DETAILS</span>
+                                <h1 class="text-4xl md:text-5xl font-black text-white mt-1">${event.title}</h1>
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 mt-6">
+                            <div class="bg-orange-500/10 rounded-2xl p-4 border border-orange-500/20">
+                                <p class="text-gray-400 text-sm mb-1">Date</p>
+                                <p class="text-white font-bold text-lg">${event.date}</p>
+                            </div>
+                            <div class="bg-orange-500/10 rounded-2xl p-4 border border-orange-500/20">
+                                <p class="text-gray-400 text-sm mb-1">Location</p>
+                                <p class="text-white font-bold text-lg">${event.location}</p>
+                            </div>
+                            <div class="bg-orange-500/10 rounded-2xl p-4 border border-orange-500/20">
+                                <p class="text-gray-400 text-sm mb-1">Attendance</p>
+                                <p class="text-white font-bold text-lg">${event.attendees}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Images Gallery -->
+                    <div class="glass-card rounded-3xl p-8 mb-8 border border-orange-500/20 shadow-xl animate-slideUp delay-100">
+                        <h2 class="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                            <i data-lucide="image" class="w-6 h-6 text-orange-400 animate-float"></i>
+                            Event Gallery
+                        </h2>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            ${event.images.map((img, i) => `
+                                <div class="relative rounded-2xl overflow-hidden bg-gray-800 aspect-video group cursor-pointer">
+                                    <img src="${img}" alt="${event.title} - Image ${i+1}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22225%22%3E%3Crect fill=%22%231f2937%22 width=%22400%22 height=%22225%22/%3E%3Ctext fill=%22%239ca3af%22 font-family=%22sans-serif%22 font-size=%2214%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EEvent Image ${i+1}%3C/text%3E%3C/svg%3E'" />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shimmer"></div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Detailed Description -->
+                    <div class="glass-card rounded-3xl p-8 mb-8 border border-orange-500/20 shadow-xl animate-slideUp delay-200">
+                        <h2 class="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                            <i data-lucide="file-text" class="w-6 h-6 text-orange-400 animate-pulse-slow"></i>
+                            About This Event
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed text-lg mb-6">${event.description}</p>
+                        <div class="text-gray-400 leading-relaxed whitespace-pre-line">${event.detailedDescription}</div>
+                    </div>
+
+                    <!-- Highlights -->
+                    <div class="glass-card rounded-3xl p-8 mb-8 border border-orange-500/20 shadow-xl animate-slideUp delay-300">
+                        <h2 class="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                            <i data-lucide="sparkles" class="w-6 h-6 text-orange-400 animate-float"></i>
+                            Event Highlights
+                        </h2>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            ${event.highlights.map(highlight => `
+                                <div class="flex items-center gap-3 bg-orange-500/10 rounded-xl p-4 border border-orange-500/20 hover:border-orange-500 transition-colors">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-orange-400"></i>
+                                    <span class="text-white font-semibold">${highlight}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Instructor -->
+                    <div class="glass-card rounded-3xl p-8 border border-orange-500/20 shadow-xl animate-slideUp delay-400">
+                        <h2 class="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                            <i data-lucide="users" class="w-6 h-6 text-orange-400 animate-pulse-slow"></i>
+                            Organized By
+                        </h2>
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center">
+                                <i data-lucide="building-2" class="w-8 h-8 text-orange-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-xl">${event.instructor}</p>
+                                <p class="text-gray-400">Event Organizer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
