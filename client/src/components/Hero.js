@@ -1,64 +1,49 @@
 import React from 'react';
-import { Rocket, Users, Calendar, Award, Sparkles } from 'lucide-react';
+import { Rocket, Users, Calendar, Award, Sparkles, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-black via-gray-950 to-black overflow-hidden py-12 lg:py-0">
-      {/* Ambient Orange Blobs */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl pointer-events-none animate-mesh-float"></div>
-      <div className="absolute bottom-10 right-10 w-[30rem] h-[30rem] bg-orange-600/15 rounded-full blur-3xl pointer-events-none animate-mesh-float" style={{ animationDelay: '3s' }}></div>
-      <div className="absolute top-0 right-1/3 w-72 h-72 bg-orange-800/20 rounded-full blur-3xl pointer-events-none animate-mesh-float" style={{ animationDelay: '6s' }}></div>
-      {/* Dot grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.04]"></div>
+    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-gray-950 to-black overflow-hidden py-12 lg:py-0">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-transparent"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-500/5 to-transparent"></div>
 
       <div className="container mx-auto px-6 lg:px-20 py-16 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between gap-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between gap-16">
 
             {/* Left Hero Copy */}
             <div className="lg:w-1/2 animate-slideUp">
               <div className="flex items-center justify-center lg:justify-start mb-8">
-                <div className="relative p-2 bg-black/60 rounded-2xl shadow-xl border border-orange-500/30 backdrop-blur-md transform transition-all duration-500 hover:scale-105 hover:rotate-1 hover:border-orange-500/70">
-                  <img src="/logo.png" alt="VSDC Logo" className="h-16 w-auto object-contain" />
+                <div className="relative">
+                  <img src="/logo.png" alt="VSDC Logo" className="h-20 w-auto object-contain" />
                 </div>
               </div>
 
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/15 via-orange-500/25 to-orange-500/15 border border-orange-500/50 px-5 py-2.5 rounded-full mb-8 shadow-lg shadow-orange-500/10 backdrop-blur-md animate-pulse-slow">
-                <Sparkles className="w-4 h-4 text-orange-400 animate-float" />
-                <span className="text-orange-400 font-bold text-xs md:text-sm tracking-wider uppercase">VIGHNOLEARN STUDENT DEVELOPMENT CLUB</span>
+              <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 px-4 py-2 rounded-full mb-8">
+                <Sparkles className="w-4 h-4 text-orange-500" />
+                <span className="text-orange-500 font-semibold text-sm tracking-wider uppercase">VighnoLearn Student Development Club</span>
               </div>
 
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight">
-                <span className="text-white transition-colors hover:text-orange-400 duration-300">V</span>
-                <span className="text-gradient-orange text-shimmer inline-block transform hover:scale-110 transition-transform duration-300">S</span>
-                <span className="text-white transition-colors hover:text-orange-400 duration-300">D</span>
-                <span className="text-gradient-orange text-shimmer inline-block transform hover:scale-110 transition-transform duration-300">C</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
+                Empowering Students Through <span className="text-orange-500">Technical Excellence</span>
               </h1>
 
-              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-100 mb-8 leading-snug">
-                Empowering <span className="text-gradient-orange">Students</span> Through{' '}
-                <span className="text-white underline decoration-orange-500/50 decoration-4">Technical</span>{' '}
-                <span className="text-gradient-orange">Excellence</span>
-              </h2>
-
               <p className="text-lg text-gray-400 leading-relaxed mb-10 max-w-xl">
-                A student club focusing on <span className="text-white font-bold">technical skills</span> and{' '}
-                <span className="text-orange-400 font-bold">industry experiences</span>. We bridge the gap between{' '}
-                <span className="text-white font-bold">academic learning</span> and{' '}
-                <span className="text-orange-400 font-bold">practical applications</span>.
+                A student club focusing on technical skills and industry experiences. We bridge the gap between academic learning and practical applications.
               </p>
 
-              <div className="flex flex-wrap gap-5 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <a
                   href="#contact"
-                  className="shimmer-btn bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 text-white px-10 py-4 rounded-2xl font-black hover:from-orange-600 hover:to-orange-500 transition-all transform hover:scale-105 shadow-xl shadow-orange-500/40 border border-orange-400/50 inline-flex items-center gap-3 cursor-pointer group"
+                  className="bg-orange-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-orange-600 transition-all transform hover:scale-105 shadow-lg shadow-orange-500/30 inline-flex items-center gap-2 cursor-pointer"
                 >
                   Join Us
-                  <Rocket className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <ArrowRight className="w-5 h-5" />
                 </a>
                 <a
                   href="#bootcamp"
-                  className="bg-black/50 text-orange-400 border-2 border-orange-500/60 px-10 py-4 rounded-2xl font-bold hover:bg-orange-500/15 hover:border-orange-400 transition-all transform hover:scale-105 backdrop-blur-md shadow-md hover:shadow-xl hover:shadow-orange-500/20 inline-block text-center cursor-pointer"
+                  className="bg-gray-800 text-white border border-gray-700 px-8 py-4 rounded-xl font-semibold hover:bg-gray-700 hover:border-gray-600 transition-all transform hover:scale-105 cursor-pointer"
                 >
                   Learn More
                 </a>
@@ -67,25 +52,25 @@ const Hero = () => {
 
             {/* Right Stats Container */}
             <div className="lg:w-1/2 mt-14 lg:mt-0 animate-slideUp delay-200">
-              <div className="glass-card rounded-3xl p-8 lg:p-12 border border-orange-500/25 shadow-2xl shadow-orange-500/10 backdrop-blur-xl relative overflow-hidden group">
-                <div className="absolute -right-20 -top-20 w-56 h-56 bg-orange-500/10 rounded-full blur-2xl group-hover:bg-orange-500/20 transition-all duration-700"></div>
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 lg:p-12 border border-gray-700/50 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl"></div>
 
                 <div className="grid grid-cols-2 gap-6 relative z-10">
                   {[
-                    { icon: Users,    count: '50+', label: 'Active Members',   delay: '0s' },
-                    { icon: Calendar, count: '20+', label: 'Events Hosted',    delay: '0.6s' },
-                    { icon: Award,    count: '15+', label: 'Industry Partners',delay: '1.2s' },
-                    { icon: Rocket,   count: '10+', label: 'Live Projects',    delay: '1.8s' },
-                  ].map(({ icon: Icon, count, label, delay }) => (
+                    { icon: Users,    count: '50+', label: 'Active Members' },
+                    { icon: Calendar, count: '20+', label: 'Events Hosted' },
+                    { icon: Award,    count: '15+', label: 'Industry Partners' },
+                    { icon: Rocket,   count: '10+', label: 'Live Projects' },
+                  ].map(({ icon: Icon, count, label }) => (
                     <div
                       key={label}
-                      className="glass-card-hover bg-gradient-to-br from-orange-950/60 to-black/80 rounded-2xl p-7 text-center border border-orange-500/20 hover:border-orange-500/80 transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.03] cursor-pointer group/stat shadow-md hover:shadow-2xl hover:shadow-orange-500/20"
+                      className="bg-gray-900/50 rounded-xl p-6 text-center border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group"
                     >
-                      <div className="w-14 h-14 bg-orange-500/15 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover/stat:bg-orange-500 transition-colors duration-500 shadow-inner">
-                        <Icon className="w-7 h-7 text-orange-400 group-hover/stat:text-white transition-colors animate-float" style={{ animationDelay: delay }} />
+                      <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-500/20 transition-colors">
+                        <Icon className="w-6 h-6 text-orange-500" />
                       </div>
-                      <p className="text-4xl lg:text-5xl font-black text-white mb-1 group-hover/stat:text-orange-400 transition-colors">{count}</p>
-                      <p className="text-gray-500 text-xs md:text-sm font-bold uppercase tracking-wider">{label}</p>
+                      <p className="text-3xl font-bold text-white mb-1">{count}</p>
+                      <p className="text-gray-400 text-sm font-medium">{label}</p>
                     </div>
                   ))}
                 </div>

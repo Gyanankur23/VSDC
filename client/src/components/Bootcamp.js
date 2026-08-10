@@ -1,69 +1,96 @@
 import React from 'react';
-import { Rocket, Zap, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Calendar, Clock, Users, Award, CheckCircle } from 'lucide-react';
 
 const Bootcamp = () => {
-  return (
-    <section id="bootcamp" className="py-24 bg-gradient-to-b from-black via-gray-950 to-black relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/3 w-[32rem] h-[32rem] bg-orange-500/10 rounded-full blur-3xl pointer-events-none animate-mesh-float"></div>
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-orange-700/10 rounded-full blur-3xl pointer-events-none animate-mesh-float" style={{ animationDelay: '4s' }}></div>
+  const features = [
+    { icon: Calendar, title: '8 Weeks', desc: 'Duration' },
+    { icon: Clock, title: '40+ Hours', desc: 'Live Sessions' },
+    { icon: Users, title: '1:1 Mentorship', desc: 'Personal Guidance' },
+    { icon: Award, title: 'Certificate', desc: 'On Completion' },
+  ];
 
-      <div className="container mx-auto px-6 lg:px-20 relative z-10 flex flex-col items-center">
-        <div className="text-center mb-12 animate-slideUp">
-          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/40 px-5 py-2.5 rounded-full mb-4 shadow-lg shadow-orange-500/10 backdrop-blur-md animate-pulse-slow">
-            <Zap className="w-5 h-5 text-orange-400 animate-float" />
-            <span className="text-orange-400 font-bold text-xs md:text-sm tracking-wider uppercase">Live Intensive Bootcamp</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">AI & Software Bootcamp</h2>
+  const curriculum = [
+    { week: 'Week 1', title: 'Introduction to AI', topics: ['AI Fundamentals', 'Machine Learning Basics', 'Python for AI'] },
+    { week: 'Week 2', title: 'Deep Learning', topics: ['Neural Networks', 'TensorFlow Basics', 'Model Training'] },
+    { week: 'Week 3', title: 'Computer Vision', topics: ['Image Processing', 'Object Detection', 'CNNs'] },
+    { week: 'Week 4', title: 'NLP', topics: ['Text Processing', 'Sentiment Analysis', 'Transformers'] },
+    { week: 'Week 5', title: 'Project Phase 1', topics: ['Project Planning', 'Data Collection', 'Model Selection'] },
+    { week: 'Week 6', title: 'Project Phase 2', topics: ['Model Training', 'Optimization', 'Testing'] },
+    { week: 'Week 7', title: 'Project Phase 3', topics: ['Deployment', 'Documentation', 'Presentation'] },
+    { week: 'Week 8', title: 'Final Showcase', topics: ['Demo Day', 'Feedback Session', 'Certification'] },
+  ];
+
+  const benefits = [
+    'Hands-on experience with real-world projects',
+    'Industry-expert mentorship',
+    'Job placement assistance',
+    'Lifetime access to course materials',
+    'Networking with industry professionals',
+    'Certificate of completion',
+  ];
+
+  return (
+    <section id="bootcamp" className="py-24 bg-gray-900 relative overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-20">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">AI Bootcamp</h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Ready to prove your skills? Join our flagship 9-day intensive program.
+            Master Artificial Intelligence with our comprehensive <span className="text-orange-500 font-semibold">8-week program</span>
           </p>
         </div>
 
-        <a 
-          href="/bootcamp.html" 
-          className="group relative w-full max-w-4xl block animate-slideUp delay-200"
-        >
-          <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          
-          <div className="relative glass-card bg-black/80 rounded-3xl p-8 md:p-12 border border-orange-500/40 overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 transition-all transform hover:-translate-y-2 hover:scale-[1.02]">
-            
-            {/* Visual element / abstract graphic */}
-            <div className="relative w-48 h-48 shrink-0 flex items-center justify-center">
-              <div className="absolute inset-0 bg-orange-500/20 rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
-              <div className="absolute inset-4 bg-gradient-to-br from-orange-600 to-red-800 rounded-2xl rotate-12 group-hover:rotate-45 transition-transform duration-700 shadow-2xl"></div>
-              <div className="absolute inset-4 bg-black/60 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-orange-500/50 -rotate-6 group-hover:rotate-0 transition-transform duration-500">
-                <ShieldCheck className="w-20 h-20 text-orange-400 group-hover:text-white transition-colors" />
+        {/* Features */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-gray-800 rounded-xl p-6 text-center border border-gray-700 hover:border-orange-500 transition-all duration-300"
+            >
+              <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <feature.icon className="w-6 h-6 text-orange-500" />
               </div>
+              <p className="text-2xl font-bold text-white mb-1">{feature.title}</p>
+              <p className="text-gray-400 text-sm">{feature.desc}</p>
             </div>
+          ))}
+        </div>
 
-            <div className="flex-1 text-center md:text-left z-10">
-              <h3 className="text-3xl md:text-4xl font-black text-white mb-3 group-hover:text-orange-400 transition-colors">
-                The Ultimate Tech Challenge
-              </h3>
-              <p className="text-lg text-gray-400 mb-6 font-medium">
-                <span className="text-orange-500 font-bold">9 DAYS</span> OF KNOWLEDGE.<br/>
-                <span className="text-orange-500 font-bold">1 DAY</span> OF IMPACT.
-              </p>
-              
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-8">
-                <span className="bg-orange-500/15 border border-orange-500/30 text-orange-400 px-4 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider">
-                  Prize Pool: ₹40,000
-                </span>
-                <span className="bg-white/5 border border-white/10 text-gray-300 px-4 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider">
-                  Event: 29th Aug 2026
-                </span>
+        {/* Curriculum */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">Curriculum Roadmap</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {curriculum.map((item, index) => (
+              <div
+                key={index}
+                className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-orange-500 transition-all duration-300"
+              >
+                <div className="text-orange-500 text-sm font-semibold mb-2">{item.week}</div>
+                <h4 className="text-lg font-bold text-white mb-3">{item.title}</h4>
+                <ul className="space-y-2">
+                  {item.topics.map((topic, i) => (
+                    <li key={i} className="text-gray-400 text-sm flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" />
+                      {topic}
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-700 text-white px-8 py-4 rounded-xl font-black text-lg group-hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] transition-all">
-                Enter the Bootcamp
-                <Rocket className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </div>
-            </div>
-            
-            {/* Background glowing accents */}
-            <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-red-600/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors duration-700"></div>
+            ))}
           </div>
-        </a>
+        </div>
+
+        {/* Benefits */}
+        <div className="bg-gray-800 rounded-2xl p-8 lg:p-12 border border-gray-700">
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">Why Choose This Bootcamp?</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
+                <span className="text-gray-300">{benefit}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
