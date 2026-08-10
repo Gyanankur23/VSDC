@@ -4,14 +4,18 @@
   "outputDirectory": "client/build",
   "installCommand": "cd client && npm install",
   "framework": null,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "https://vsdc-server.vercel.app/api/:path*"
+      "src": "/api/(.*)",
+      "dest": "https://vsdc-server.vercel.app/api/$1"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(logo\\.png|profiles/.*)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
   "cleanUrls": true,
