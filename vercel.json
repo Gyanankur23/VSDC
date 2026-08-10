@@ -4,27 +4,26 @@
   "installCommand": "cd client && npm install",
   "outputDirectory": "client/build",
   "framework": null,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "https://vsdc-server.vercel.app/api/$1"
+      "source": "/api/:path*",
+      "destination": "https://vsdc-server.vercel.app/api/:path*"
     },
     {
-      "src": "/profile.html",
-      "dest": "/profile.html"
+      "source": "/profile.html",
+      "destination": "/profile.html"
     },
     {
-      "src": "/event-details.html",
-      "dest": "/event-details.html"
+      "source": "/event-details.html",
+      "destination": "/event-details.html"
     },
     {
-      "src": "/bootcamp.html",
-      "dest": "/bootcamp.html"
+      "source": "/bootcamp.html",
+      "destination": "/bootcamp.html"
     },
     {
-      "src": "/.*",
-      "dest": "/index.html",
-      "status": 200
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
