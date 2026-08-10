@@ -3,7 +3,7 @@
   "buildCommand": "cd client && npm run build",
   "installCommand": "cd client && npm install",
   "outputDirectory": "client/build",
-  "framework": null,
+  "framework": "vite",
   "routes": [
     {
       "src": "/api/(.*)",
