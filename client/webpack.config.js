@@ -23,6 +23,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name][ext]'
+        }
       }
     ]
   },
@@ -37,6 +44,10 @@ module.exports = {
   devServer: {
     port: 3000,
     historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, 'public'),
+      publicPath: '/'
+    },
     proxy: {
       '/api': 'http://localhost:5000'
     }
