@@ -10,8 +10,40 @@
       "destination": "https://vsdc-server.vercel.app/api/:path*"
     },
     {
+      "source": "/profile.html",
+      "destination": "/profile.html"
+    },
+    {
+      "source": "/event-details.html",
+      "destination": "/event-details.html"
+    },
+    {
+      "source": "/bootcamp.html",
+      "destination": "/bootcamp.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(?:html|json)$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
     }
   ]
 }
