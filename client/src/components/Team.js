@@ -5,7 +5,7 @@ const Team = () => {
   const members = [
     {
       name: "Manas", role: "President", year: "Third Year", dept: "Data Science",
-      image: "/profiles/Manas.png",
+      image: "/public/profiles/Manas.png",
       social: {
         instagram: "https://www.instagram.com/manas_shukla_101",
         github: "https://github.com/manas-shukla-101",
