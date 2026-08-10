@@ -14,9 +14,9 @@ const Team = () => {
         website: "https://manas-shukla-portfolio.framer.website/"
       }
     },
-    { name: "Ayushi",    role: "Vice President",               year: "Second Year", dept: "BCA",         image: "https://ui-avatars.com/api/?name=Ayushi&background=f97316&color=fff&size=200", initial: "A",   social: {} },
-    { name: "Divyanshu", role: "Secretary",                   year: "Final Year",  dept: "DS",          image: "https://ui-avatars.com/api/?name=Divyanshu&background=f97316&color=fff&size=200", initial: "D",   social: {} },
-    { name: "Amiti",     role: "Marketing Head",               year: "Second Year", dept: "BCA",         image: "https://ui-avatars.com/api/?name=Amiti&background=f97316&color=fff&size=200", initial: "Am",  social: {} },
+    { name: "Ayushi",    role: "Vice President",               year: "Second Year", dept: "BCA",         image: "/profiles/ayushi.png", initial: "A",   social: {} },
+    { name: "Divyanshu", role: "Secretary",                   year: "Final Year",  dept: "DS",          image: "/profiles/divyanshu.png", initial: "D",   social: {} },
+    { name: "Amiti",     role: "Marketing Head",               year: "Second Year", dept: "BCA",         image: null, initial: "Am",  social: {} },
     {
       name: "Gyanankur", role: "Technical Head", year: "Third Year", dept: "Data Science",
       image: "/profiles/Gyanankur.png",
@@ -30,7 +30,7 @@ const Team = () => {
     },
     {
       name: "Mahima", role: "Event Coordinator", year: "Third Year", dept: "Data Science",
-      image: "https://ui-avatars.com/api/?name=Mahima&background=f97316&color=fff&size=200", initial: "Mah",
+      image: "/profiles/mahima.png", initial: "Mah",
       social: {
         instagram: "https://www.instagram.com/maahhhiiii__?igsh=bjBxd25vMDdpaTZr&utm_source=qr",
         github: "https://github.com/mahimasingh20",
@@ -39,11 +39,11 @@ const Team = () => {
         website: "https://github.com/mahimasingh20"
       }
     },
-    { name: "Aayush", role: "PR Head", year: "Final Year", dept: "Data Science", image: "https://ui-avatars.com/api/?name=Aayush&background=f97316&color=fff&size=200", initial: "Aa", social: {} }
+    { name: "Aayush", role: "PR Head", year: "Final Year", dept: "Data Science", image: "/profiles/ayush.png", initial: "Aa", social: {} }
   ];
 
   return (
-    <section id="team" className="py-24 bg-gray-900 relative overflow-hidden">
+    <section id="team" className="py-24 bg-gradient-to-br from-orange-900 via-black to-gray-900 relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Team Heads</h2>

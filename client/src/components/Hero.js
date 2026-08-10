@@ -3,7 +3,7 @@ import { Rocket, Users, Calendar, Award, Sparkles, ArrowRight } from 'lucide-rea
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-gray-950 to-black overflow-hidden py-12 lg:py-0">
+    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-orange-900 via-black to-gray-900 overflow-hidden py-12 lg:py-0">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-transparent"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-500/5 to-transparent"></div>
