@@ -1,27 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Github, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 
-const Footer = () => {
+const VighnoLearnFooter = () => {
   const socials = [
-    { icon: Github,    href: "https://github.com/manas-shukla-101",                   title: "GitHub" },
-    { icon: Linkedin,  href: "https://www.linkedin.com/in/manas-shukla-006774370",    title: "LinkedIn" },
-    { icon: Instagram, href: "https://www.instagram.com/manas_shukla_101",            title: "Instagram" },
-    { icon: Mail,      href: "mailto:vsdc@vighnolearn.com",                           title: "Email" },
+    { icon: Github,    href: "https://github.com/vighnolearn",                   title: "GitHub" },
+    { icon: Linkedin,  href: "https://www.linkedin.com/company/vighnolearn",    title: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/vighnolearn",            title: "Instagram" },
+    { icon: Mail,      href: "mailto:info@vighnolearn.com",                           title: "Email" },
   ];
 
   const quickLinks = [
-    { label: 'Home',        href: '#' },
-    { label: 'Team Heads',  href: '#team' },
-    { label: 'AI Bootcamp', href: '#bootcamp' },
-    { label: 'Past Events', href: '#events' },
-    { label: 'Join VSDC',   href: '#contact' },
+    { label: 'Home',        href: '/vighnolearn' },
+    { label: 'About',       href: '/vighnolearn/about' },
+    { label: 'Courses',     href: '/vighnolearn/courses' },
+    { label: 'Events',      href: '/vighnolearn/events' },
+    { label: 'Contact',     href: '/vighnolearn/contact' },
   ];
 
   const resources = [
-    { label: 'Curriculum Roadmap', href: '#bootcamp' },
-    { label: 'Tech Workshops',     href: '#events' },
-    { label: 'Member Application', href: '#contact' },
-    { label: 'Member Showcase',    href: 'profile.html?name=manas', external: true },
+    { label: 'Course Catalog', href: '/vighnolearn/courses' },
+    { label: 'Upcoming Events', href: '/vighnolearn/events' },
+    { label: 'Join Community',  href: '/vighnolearn/contact' },
+    { label: 'Student Success', href: '/vighnolearn' },
   ];
 
   return (
@@ -32,11 +33,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center mb-4">
-              <img src="/vsdc-logo.jpg" alt="VSDC Logo" className="h-10 w-auto mr-3" />
-              <h3 className="text-2xl font-bold text-white">VSDC</h3>
+              <img src="/logo.png" alt="VighnoLearn Logo" className="h-10 w-auto mr-3" />
+              <h3 className="text-2xl font-bold text-white">VighnoLearn</h3>
             </div>
             <p className="text-gray-400 leading-relaxed">
-              VighnoLearn <span className="text-orange-500 font-semibold">Student Development</span> Club
+              India's Largest <span className="text-orange-500 font-semibold">Student Builder</span> Community
             </p>
             <div className="flex gap-3 pt-2">
               {socials.map(({ icon: Icon, href, title }) => (
@@ -60,9 +61,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map(({ label, href }) => (
                 <li key={label}>
-                  <a href={href} className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 text-sm">
+                  <Link to={href} className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 text-sm">
                     <ArrowRight className="w-4 h-4 text-orange-500" /> {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -72,12 +73,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-5">Resources</h4>
             <ul className="space-y-3">
-              {resources.map(({ label, href, external }) => (
+              {resources.map(({ label, href }) => (
                 <li key={label}>
-                  <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 text-sm">
+                  <Link to={href} className="text-gray-400 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 text-sm">
                     <ArrowRight className="w-4 h-4 text-orange-500" /> {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -90,18 +90,18 @@ const Footer = () => {
               <div className="w-8 h-8 bg-orange-500/10 rounded-lg flex items-center justify-center text-orange-500">
                 <Mail className="w-4 h-4" />
               </div>
-              <span className="text-sm text-gray-400">vsdc@vighnolearn.com</span>
+              <span className="text-sm text-gray-400">info@vighnolearn.com</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Join our vibrant tech community and build real-world{' '}
-              <span className="text-orange-500 font-semibold">projects</span> with top peers.
+              Join 10,000+ students building the future with{' '}
+              <span className="text-orange-500 font-semibold">hands-on learning</span> and mentorship.
             </p>
           </div>
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © 2026 VSDC — VighnoLearn Student Development Club. All rights reserved.
+            © 2026 VighnoLearn — India's Largest Student Builder Community. All rights reserved.
           </p>
         </div>
       </div>
@@ -109,4 +109,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default VighnoLearnFooter;

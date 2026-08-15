@@ -19,6 +19,9 @@ const Bootcamp = () => {
         {/* Single Impact Card */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="bg-gray-800 rounded-3xl p-8 lg:p-12 border border-gray-700 shadow-2xl text-center">
+            <div className="mb-8">
+              <img src="/bootcamp-vsdc.jpg" alt="VSDC Bootcamp" className="w-full h-auto max-h-[1300px] object-cover rounded-2xl" />
+            </div>
             <h3 className="text-2xl font-black text-white mb-6">Program Overview</h3>
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div className="bg-orange-500/10 rounded-2xl p-6 border border-orange-500/30">

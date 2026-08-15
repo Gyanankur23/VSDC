@@ -16,7 +16,7 @@ const Hero = () => {
             <div className="lg:w-1/2 animate-slideUp">
               <div className="flex items-center justify-center lg:justify-start mb-8">
                 <div className="relative">
-                  <img src="/logo.png" alt="VSDC Logo" className="h-20 w-auto object-contain" />
+                  <img src="/vsdc-logo.jpg" alt="VSDC Logo" className="h-24 w-auto object-contain" />
                 </div>
               </div>
 
